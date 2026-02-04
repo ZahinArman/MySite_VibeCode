@@ -3,337 +3,610 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zahin Arman | Portfolio</title>
-    <!-- Fonts -->
+    <title>Zahin Arman</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&family=VT323&display=swap" rel="stylesheet">
-    <!-- Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg: #fdfaf6;
-            --text: #333333;
-            --accent: #78926d;
-            --accent-light: #d4e0d0;
-            --pixel-size: 4px;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --bg-dark: #1a1a1a;
+            --bg-darker: #0f0f0f;
+            --card-bg: #2a2a2a;
+            --text-white: #ffffff;
+            --text-gray: #b0b0b0;
+            --accent-red: #e74c3c;
+            --accent-red-dark: #c0392b;
+            --border-gray: #3a3a3a;
+        }
+
         body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'IBM Plex Sans', sans-serif;
+            background: var(--bg-darker);
+            color: var(--text-white);
             line-height: 1.7;
             overflow-x: hidden;
-            selection-background-color: var(--accent-light);
+            font-weight: 300;
         }
 
-        /* Retro Typography */
-        h1, h2, h3, .retro-text {
-            font-family: 'VT323', monospace;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+        /* Removed texture for clean dark aesthetic */
 
-        /* Layout */
         .container {
-            max-width: 700px;
+            max-width: 800px;
             margin: 0 auto;
-            padding: 100px 24px;
-        }
-
-        section {
-            margin-bottom: 120px;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Pixel Accent Box */
-        .pixel-border {
-            border: 2px solid var(--text);
+            padding: 0 40px;
             position: relative;
-            padding: 2rem;
-            background: white;
-            box-shadow: 6px 6px 0px var(--accent-light);
-            border-radius: 2px;
+            z-index: 2;
         }
 
-        /* Header */
-        header {
-            margin-bottom: 150px;
+        /* Header section */
+        .header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
+            position: relative;
         }
 
         .greeting {
-            font-size: 4.5rem;
-            color: var(--accent);
-            margin-bottom: 1rem;
-            animation: float 4s ease-in-out infinite;
-        }
-
-        /* Sections */
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            color: var(--accent);
-        }
-
-        .section-title::after {
-            content: "";
-            height: 4px;
-            width: 40px;
-            background: var(--accent-light);
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 400;
+            color: var(--text-white);
+            margin-bottom: 2rem;
+            animation: fadeSlideDown 1s ease-out;
+            letter-spacing: -2px;
+            line-height: 1.1;
+            position: relative;
             display: inline-block;
         }
 
-        .sub-heading {
-            font-weight: 600;
-            font-size: 1.2rem;
+        .greeting::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 3px;
+            background: var(--accent-red);
+        }
+
+        /* Minimalist dark design - no decorations */
+
+        /* Sections */
+        section {
+            margin-bottom: 120px;
+            opacity: 0;
+            animation: fadeSlideUp 0.8s ease-out forwards;
+        }
+
+        section:nth-child(1) { animation-delay: 0.2s; }
+        section:nth-child(2) { animation-delay: 0.3s; }
+        section:nth-child(3) { animation-delay: 0.4s; }
+        section:nth-child(4) { animation-delay: 0.5s; }
+        section:nth-child(5) { animation-delay: 0.6s; }
+        section:nth-child(6) { animation-delay: 0.7s; }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 500;
+            color: var(--text-white);
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.75rem;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50%;
+            height: 2px;
+            background: var(--accent-red);
+        }
+
+        .section-subtitle {
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
+            font-weight: 500;
+            color: var(--accent-red);
+            margin-bottom: 1rem;
+            display: inline-block;
+            letter-spacing: -0.3px;
+        }
+
+        .section-text {
+            font-size: clamp(1rem, 2.5vw, 1.125rem);
+            line-height: 1.8;
+            color: var(--text-gray);
+            max-width: 700px;
+        }
+
+        /* Intro section specific */
+        .intro-name {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            font-weight: 500;
+            color: var(--text-white);
             margin-bottom: 0.5rem;
-            display: block;
+            letter-spacing: -1px;
         }
 
-        p {
-            font-size: 1.05rem;
-            color: #555;
-            max-width: 600px;
+        .intro-role {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            color: var(--accent-red);
+            margin-bottom: 2rem;
+            font-weight: 400;
         }
 
-        /* Hobbies & Favorites */
+        /* Content card styling - dark glass morphism effect */
+        .content-card {
+            background: rgba(42, 42, 42, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-gray);
+            border-radius: 24px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-red), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .content-card:hover::before {
+            opacity: 1;
+        }
+
+        .content-card:hover {
+            background: rgba(42, 42, 42, 0.8);
+            border-color: var(--accent-red);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(231, 76, 60, 0.15);
+        }
+
+        /* Hobbies section */
         .hobbies-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
 
-        ul {
-            list-style: none;
+        .hobby-item {
+            background: rgba(42, 42, 42, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-gray);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            position: relative;
         }
 
-        li {
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        li::before {
-            content: "◆";
-            color: var(--accent);
-            font-size: 0.8rem;
-        }
-
-        .favorites-box {
-            background: var(--accent-light);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-top: 2rem;
-        }
-
-        .favorites-box h3 {
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .fav-item {
-            margin-bottom: 10px;
-            font-size: 0.95rem;
-        }
-
-        .fav-label {
-            font-weight: 700;
-            color: var(--accent);
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-            display: block;
-        }
-
-        /* Contact */
-        .contact-links {
-            display: flex;
-            gap: 30px;
-            justify-content: center;
-            margin-top: 3rem;
-        }
-
-        .social-icon {
-            color: var(--text);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-decoration: none;
-            gap: 8px;
-        }
-
-        .social-icon:hover {
-            color: var(--accent);
-            transform: translateY(-5px) scale(1.1);
-        }
-
-        .social-icon span {
-            font-family: 'VT323', monospace;
-            font-size: 0.9rem;
+        .hobby-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 3px;
+            height: 100%;
+            background: var(--accent-red);
             opacity: 0;
-            transition: 0.3s;
+            border-radius: 16px 0 0 16px;
+            transition: opacity 0.4s ease;
         }
 
-        .social-icon:hover span {
+        .hobby-item:hover {
+            background: rgba(42, 42, 42, 0.8);
+            border-color: var(--accent-red);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(231, 76, 60, 0.1);
+        }
+
+        .hobby-item:hover::before {
             opacity: 1;
         }
 
-        /* Animations */
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        .hobby-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: var(--text-white);
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+            letter-spacing: -0.5px;
         }
 
-        /* Mobile Adjustments */
-        @media (max-width: 600px) {
-            .greeting { font-size: 3rem; }
-            .hobbies-grid { grid-template-columns: 1fr; }
-            .container { padding: 60px 20px; }
+        .hobby-list {
+            list-style: none;
+        }
+
+        .hobby-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.95rem;
+            color: var(--text-gray);
+        }
+
+        .hobby-list li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--accent-red);
+            font-size: 0.9rem;
+        }
+
+        .favorites-item {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .favorites-item {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-gray);
+        }
+
+        .favorites-item::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent-red);
+            font-weight: bold;
+        }
+
+        .favorites-label {
+            font-weight: 500;
+            color: var(--text-white);
+        }
+
+        /* Image styling */
+        .profile-image-container {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--accent-red);
+            margin: 0 auto 2rem;
+            box-shadow: 0 10px 40px rgba(231, 76, 60, 0.3);
+            animation: fadeSlideDown 1.2s ease-out;
+        }
+
+        .profile-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .content-image-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin: 2rem auto;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 2px solid var(--border-gray);
+            transition: all 0.4s ease;
+        }
+
+        .content-image-wrapper:hover {
+            border-color: var(--accent-red);
+            box-shadow: 0 15px 40px rgba(231, 76, 60, 0.2);
+            transform: translateY(-4px);
+        }
+
+        .content-image-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .intro-with-image {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .intro-text-content {
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .intro-with-image {
+                flex-direction: row;
+                text-align: left;
+                gap: 3rem;
+                align-items: flex-start;
+            }
+
+            .profile-image-container {
+                flex-shrink: 0;
+                margin: 0;
+            }
+
+            .intro-text-content {
+                flex: 1;
+            }
+        }
+
+        .image-placeholder {
+            background: rgba(231, 76, 60, 0.1);
+            border: 2px dashed var(--accent-red);
+            border-radius: 16px;
+            padding: 3rem;
+            text-align: center;
+            color: var(--text-gray);
+            font-style: italic;
+            margin: 2rem auto;
+            max-width: 500px;
+        }
+
+        /* Contact section */
+        .contact-section {
+            text-align: center;
+            padding: 3rem 0 5rem 0;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(42, 42, 42, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--text-white);
+            text-decoration: none;
+            transition: all 0.4s ease;
+            position: relative;
+            font-weight: 500;
+            font-family: 'IBM Plex Sans', sans-serif;
+        }
+
+        .social-icon:hover {
+            background: var(--accent-red);
+            color: var(--text-white);
+            border-color: var(--accent-red);
+            transform: translateY(-8px) scale(1.1);
+            box-shadow: 0 15px 40px rgba(231, 76, 60, 0.4);
+        }
+
+        /* Animations */
+        @keyframes fadeSlideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeFloat {
+            0%, 100% {
+                opacity: 0.2;
+                transform: translateY(0px);
+            }
+            50% {
+                opacity: 0.4;
+                transform: translateY(-30px);
+            }
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 0.85rem;
+            color: var(--accent-red);
+            animation: bounce 2s infinite;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 24px;
+            }
+
+            .content-card {
+                padding: 1.5rem;
+            }
+
+            .hobbies-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .social-links {
+                gap: 1.5rem;
+            }
+
+            .social-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+
+            section {
+                margin-bottom: 80px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
+    <div class="header">
+        <h1 class="greeting">Assalamu<br>Alaikum</h1>
+        
+        <div class="scroll-indicator">scroll</div>
+    </div>
 
     <div class="container">
-        <!-- Header -->
-        <header>
-            <h1 class="greeting">Assalamu Alaikum</h1>
-        </header>
-
-        <!-- 1. Introduction -->
-        <section id="intro">
-            <h2 class="section-title">Introduction</h2>
-            <span class="sub-heading">I’m Zahin Arman</span>
-            <span class="retro-text" style="color: var(--accent);">Student at East West University, CSE Department, 2nd Year</span>
-            <p style="margin-top: 1.5rem;">
-                Navigating the world of computer science at East West University has been an exhilarating journey so far. As a second-year student, I find myself deeply immersed in the fast-paced rhythm of lab reports, coding challenges, and theory. I genuinely enjoy the process of breaking down complex problems and building creative solutions through course projects. Balancing rigorous academic demands with my creative side projects is a challenge I embrace daily, as it helps me grow both as an engineer and an individual.
-            </p>
+        <!-- Introduction -->
+        <section>
+            <div class="content-card">
+                <div class="intro-with-image">
+                    <div class="profile-image-container">
+                        <img src="your-profile-photo.jpg" alt="Zahin Arman">
+                    </div>
+                    <div class="intro-text-content">
+                        <h2 class="intro-name">I'm Zahin Arman</h2>
+                        <p class="intro-role">Student at East West University, CSE Department, second year</p>
+                        <p class="section-text">
+                            University life as a CSE student has been an exciting journey of growth and discovery. I genuinely enjoy diving into programming challenges, debugging complex problems, and watching my code come to life. Between lectures, lab sessions, and late-night project deadlines, I've learned to manage time better while keeping my passion for technology alive. The fast-paced environment pushes me to adapt quickly, but I'm grateful for every moment that teaches me something new. Balancing coursework with creative pursuits keeps things interesting, and I'm always eager to explore new areas within computer science.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="content-image-wrapper">
+                    <img src="your-university-photo.jpg" alt="East West University">
+                </div>
+            </div>
         </section>
 
-        <!-- 2. Teaching -->
-        <section id="teaching">
+        <!-- Teaching -->
+        <section>
             <h2 class="section-title">Teaching</h2>
-            <div class="pixel-border">
-                <span class="sub-heading">Teacher at Basic Learner of Science</span>
-                <p>
-                    I currently have the privilege of teaching ICT to HSC level students, where I translate technical concepts into relatable lessons. There is a special kind of satisfaction in watching a student finally grasp a difficult topic after a clear explanation. This role has pushed me to refine my communication skills and has significantly boosted my confidence in public speaking. I take great pride in creating a learning environment that is patient, encouraging, and easy to navigate.
+            <div class="content-card">
+                <h3 class="section-subtitle">Teacher at Basic Learner of Science</h3>
+                <p class="section-text">
+                    Teaching ICT to HSC level students has been one of the most rewarding experiences of my life. I take pride in breaking down complex topics into simple, understandable concepts that students can actually relate to. Watching a student's face light up when they finally grasp a difficult idea is incredibly fulfilling. This role has not only sharpened my technical knowledge but also improved my communication skills and boosted my confidence. I've learned that teaching isn't just about sharing knowledge—it's about inspiring curiosity and making learning an enjoyable experience.
+                </p>
+                
+                <div class="content-image-wrapper">
+                    <img src="your-teaching-photo.png" alt="Teaching at Basic Learner of Science">
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Editing -->
+        <section>
+            <h2 class="section-title">Video Editing</h2>
+            <div class="content-card">
+                <h3 class="section-subtitle">Video editor</h3>
+                <p class="section-text">
+                    Video editing has become my creative outlet where I can craft compelling stories through visuals and sound. I primarily work with Adobe Premiere Pro, and I'm constantly pushing myself to improve by taking courses and experimenting with new techniques. Whether it's documentary-style content that tells real stories, short-form videos optimized for social media, or personal creative projects that let me express myself, I love the entire process. There's something magical about transforming raw footage into a polished piece that resonates with viewers. Every project is an opportunity to learn and grow as an editor.
+                </p>
+                
+                <div class="content-image-wrapper">
+                    <img src="editing.jpg" alt="Video Editing Work">
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Creator -->
+        <section>
+            <h2 class="section-title">Content Creator</h2>
+            <div class="content-card">
+                <h3 class="section-subtitle">Content creator</h3>
+                <p class="section-text">
+                    Running a YouTube channel has been an amazing way to document my journey and connect with like-minded people. I share daily life experiences, student life moments, CSE-related progress, and updates on my Java learning journey. The content I create is simple, relatable, and grounded in reality—no fancy filters, just genuine experiences. It's fulfilling to know that my videos might help someone going through similar challenges or inspire them to pursue their own goals. Creating content has taught me consistency, storytelling, and the importance of authenticity in building a community.
                 </p>
             </div>
         </section>
 
-        <!-- 3. Video Editing -->
-        <section id="editing">
-            <h2 class="section-title">Video Editing</h2>
-            <span class="sub-heading">Video Editor</span>
-            <p>
-                Video editing is where my technical skills meet my love for storytelling. Using Adobe Premiere Pro, I enjoy the meticulous process of crafting narratives, whether it’s a fast-paced short or a more reflective documentary-style piece. I am constantly refining my craft through advanced courses, always looking for new ways to manipulate rhythm and visuals. For me, every project is an opportunity to turn raw footage into a polished, emotive experience.
-            </p>
-        </section>
-
-        <!-- 4. Content Creator -->
-        <section id="content">
-            <h2 class="section-title">Content Creator</h2>
-            <p>
-                I run a YouTube channel that serves as a digital diary of my life as a student and a developer. From sharing my progress in Java programming to documenting the quiet realities of daily university life, I aim to keep my content grounded and relatable. It’s a space where I share my CSE updates and personal milestones with a community of like-minded learners. I believe in showing the authentic process—the struggles of debugging just as much as the joy of a finished project.
-            </p>
-        </section>
-
-        <!-- 5. Hobbies and Favorites -->
-        <section id="hobbies">
-            <h2 class="section-title">Hobbies</h2>
+        <!-- Hobbies and Favorites -->
+        <section>
+            <h2 class="section-title">Hobbies & Favorites</h2>
+            
             <div class="hobbies-grid">
-                <div>
-                    <ul>
+                <div class="hobby-item">
+                    <h3 class="hobby-title">Hobbies</h3>
+                    <ul class="hobby-list">
                         <li>Watching anime</li>
                         <li>Reading books</li>
                         <li>Playing games</li>
                     </ul>
                 </div>
-            </div>
 
-            <div class="favorites-box">
-                <h3>Favorites</h3>
-                <div class="fav-item">
-                    <span class="fav-label">Game</span>
-                    Sekiro: Shadows Die Twice
-                </div>
-                <div class="fav-item">
-                    <span class="fav-label">Anime</span>
-                    Sword Art Online, Clannad After Story
-                </div>
-                <div class="fav-item">
-                    <span class="fav-label">Books</span>
-                    Deep Work, Atomic Habits
+                <div class="hobby-item">
+                    <h3 class="hobby-title">Favorites</h3>
+                    <div class="favorites-item">
+                        <span class="favorites-label">Game:</span> Sekiro Shadow Die Twice
+                    </div>
+                    <div class="favorites-item">
+                        <span class="favorites-label">Anime:</span> Sword Art Online, Clannad After Story
+                    </div>
+                    <div class="favorites-item">
+                        <span class="favorites-label">Books:</span> Deep Work, Atomic Habits
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- 6. Contact -->
-        <section id="contact" style="text-align: center; margin-bottom: 50px;">
-            <h2 class="section-title" style="justify-content: center;">Contact</h2>
-            <div class="contact-links">
-                <a href="#" class="social-icon">
-                    <i data-lucide="facebook"></i>
-                    <span>Facebook</span>
-                </a>
-                <a href="#" class="social-icon">
-                    <i data-lucide="instagram"></i>
-                    <span>Instagram</span>
-                </a>
-                <a href="#" class="social-icon">
-                    <i data-lucide="twitter"></i>
-                    <span>Twitter</span>
-                </a>
+        <!-- Contact -->
+        <section class="contact-section">
+            <h2 class="section-title">Contact</h2>
+            <div class="social-links">
+                <a href="#" class="social-icon" title="Facebook">f</a>
+                <a href="#" class="social-icon" title="Instagram">ig</a>
+                <a href="#" class="social-icon" title="Twitter">𝕏</a>
             </div>
         </section>
-
-        <footer style="text-align: center; font-family: 'VT323'; opacity: 0.5; font-size: 0.9rem;">
-            © 2024 ZAHIN ARMAN • STAGE 2
-        </footer>
     </div>
-
-    <script>
-        // Initialize Icons
-        lucide.createIcons();
-
-        // Scroll Animation Observer
-        const observerOptions = {
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
-    </script>
 </body>
 </html>
