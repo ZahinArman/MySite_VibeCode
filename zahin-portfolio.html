@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zahin Arman</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #faf8f3;
+            --dark: #2a2a2a;
+            --accent: #ff6b6b;
+            --accent-soft: #ffa5a5;
+            --purple: #9b87f5;
+            --blue: #7dd3fc;
+            --green: #86efac;
+            --pixel-size: 2px;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Subtle pixel grain overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.02) 2px, rgba(0,0,0,0.02) 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,0.02) 2px, rgba(0,0,0,0.02) 4px);
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.3;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Header section */
+        .header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .greeting {
+            font-family: 'Press Start 2P', cursive;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            color: var(--dark);
+            margin-bottom: 2rem;
+            animation: fadeSlideDown 1s ease-out;
+            letter-spacing: 2px;
+            text-shadow: 4px 4px 0px var(--accent-soft);
+            line-height: 1.4;
+        }
+
+        /* Floating pixel decorations */
+        .pixel-decoration {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            animation: float 6s ease-in-out infinite;
+            box-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
+        }
+
+        .pixel-decoration:nth-child(1) {
+            top: 15%;
+            left: 10%;
+            background: var(--purple);
+            animation-delay: 0s;
+            animation-duration: 7s;
+        }
+
+        .pixel-decoration:nth-child(2) {
+            top: 25%;
+            right: 15%;
+            background: var(--blue);
+            animation-delay: 1s;
+            animation-duration: 8s;
+        }
+
+        .pixel-decoration:nth-child(3) {
+            bottom: 20%;
+            left: 15%;
+            background: var(--green);
+            animation-delay: 2s;
+            animation-duration: 6s;
+        }
+
+        .pixel-decoration:nth-child(4) {
+            bottom: 30%;
+            right: 10%;
+            background: var(--accent-soft);
+            animation-delay: 3s;
+            animation-duration: 9s;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 120px;
+            opacity: 0;
+            animation: fadeSlideUp 0.8s ease-out forwards;
+        }
+
+        section:nth-child(1) { animation-delay: 0.2s; }
+        section:nth-child(2) { animation-delay: 0.3s; }
+        section:nth-child(3) { animation-delay: 0.4s; }
+        section:nth-child(4) { animation-delay: 0.5s; }
+        section:nth-child(5) { animation-delay: 0.6s; }
+        section:nth-child(6) { animation-delay: 0.7s; }
+
+        .section-title {
+            font-family: 'Space Mono', monospace;
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent) 0%, var(--purple) 100%);
+            box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
+        }
+
+        .section-subtitle {
+            font-family: 'Space Mono', monospace;
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .section-text {
+            font-size: clamp(1rem, 2.5vw, 1.125rem);
+            line-height: 1.8;
+            color: var(--dark);
+            opacity: 0.9;
+            max-width: 700px;
+        }
+
+        /* Intro section specific */
+        .intro-name {
+            font-family: 'Space Mono', monospace;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .intro-role {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            color: var(--purple);
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        /* Content card styling */
+        .content-card {
+            background: rgba(255, 255, 255, 0.7);
+            border: 3px solid var(--dark);
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: 8px 8px 0px rgba(42, 42, 42, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--purple), var(--blue), var(--green));
+            background-size: 200% 100%;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        .content-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 12px 12px 0px rgba(42, 42, 42, 0.15);
+        }
+
+        /* Hobbies section */
+        .hobbies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .hobby-item {
+            background: rgba(255, 255, 255, 0.6);
+            border: 2px solid var(--dark);
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .hobby-item::before {
+            content: '▶';
+            position: absolute;
+            left: 1rem;
+            top: 1.3rem;
+            font-size: 0.8rem;
+            color: var(--accent);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .hobby-item:hover {
+            transform: translateX(8px);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .hobby-item:hover::before {
+            opacity: 1;
+            left: 0.5rem;
+        }
+
+        .hobby-title {
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .hobby-list {
+            list-style: none;
+        }
+
+        .hobby-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .hobby-list li::before {
+            content: '■';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 0.8rem;
+        }
+
+        .favorites-item {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .favorites-item::before {
+            content: '♥';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .favorites-label {
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        /* Contact section */
+        .contact-section {
+            text-align: center;
+            padding: 3rem 0 5rem 0;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.8);
+            border: 3px solid var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--dark);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            font-weight: bold;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-8px);
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 8px 16px rgba(255, 107, 107, 0.3);
+        }
+
+        .social-icon:nth-child(1):hover {
+            background: #1877f2;
+        }
+
+        .social-icon:nth-child(2):hover {
+            background: #e4405f;
+        }
+
+        .social-icon:nth-child(3):hover {
+            background: #1da1f2;
+        }
+
+        /* Animations */
+        @keyframes fadeSlideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+            50% {
+                transform: translateY(-10px) rotate(-5deg);
+            }
+            75% {
+                transform: translateY(-15px) rotate(3deg);
+            }
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--dark);
+            opacity: 0.6;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 24px;
+            }
+
+            .content-card {
+                padding: 1.5rem;
+            }
+
+            .hobbies-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .social-links {
+                gap: 1.5rem;
+            }
+
+            .social-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+
+            section {
+                margin-bottom: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="pixel-decoration"></div>
+        <div class="pixel-decoration"></div>
+        <div class="pixel-decoration"></div>
+        <div class="pixel-decoration"></div>
+        
+        <h1 class="greeting">Assalamu<br>Alaikum</h1>
+        
+        <div class="scroll-indicator">↓ scroll ↓</div>
+    </div>
+
+    <div class="container">
+        <!-- Introduction -->
+        <section>
+            <div class="content-card">
+                <h2 class="intro-name">I'm Zahin Arman</h2>
+                <p class="intro-role">Student at East West University, CSE Department, second year</p>
+                <p class="section-text">
+                    University life as a CSE student has been an exciting journey of growth and discovery. I genuinely enjoy diving into programming challenges, debugging complex problems, and watching my code come to life. Between lectures, lab sessions, and late-night project deadlines, I've learned to manage time better while keeping my passion for technology alive. The fast-paced environment pushes me to adapt quickly, but I'm grateful for every moment that teaches me something new. Balancing coursework with creative pursuits keeps things interesting, and I'm always eager to explore new areas within computer science.
+                </p>
+            </div>
+        </section>
+
+        <!-- Teaching -->
+        <section>
+            <h2 class="section-title">Teaching</h2>
+            <div class="content-card">
+                <h3 class="section-subtitle">Teacher at Basic Learner of Science</h3>
+                <p class="section-text">
+                    Teaching ICT to HSC level students has been one of the most rewarding experiences of my life. I take pride in breaking down complex topics into simple, understandable concepts that students can actually relate to. Watching a student's face light up when they finally grasp a difficult idea is incredibly fulfilling. This role has not only sharpened my technical knowledge but also improved my communication skills and boosted my confidence. I've learned that teaching isn't just about sharing knowledge—it's about inspiring curiosity and making learning an enjoyable experience.
+                </p>
+            </div>
+        </section>
+
+        <!-- Video Editing -->
+        <section>
+            <h2 class="section-title">Video Editing</h2>
+            <div class="content-card">
+                <h3 class="section-subtitle">Video editor</h3>
+                <p class="section-text">
+                    Video editing has become my creative outlet where I can craft compelling stories through visuals and sound. I primarily work with Adobe Premiere Pro, and I'm constantly pushing myself to improve by taking courses and experimenting with new techniques. Whether it's documentary-style content that tells real stories, short-form videos optimized for social media, or personal creative projects that let me express myself, I love the entire process. There's something magical about transforming raw footage into a polished piece that resonates with viewers. Every project is an opportunity to learn and grow as an editor.
+                </p>
+            </div>
+        </section>
+
+        <!-- Content Creator -->
+        <section>
+            <h2 class="section-title">Content Creator</h2>
+            <div class="content-card">
+                <h3 class="section-subtitle">Content creator</h3>
+                <p class="section-text">
+                    Running a YouTube channel has been an amazing way to document my journey and connect with like-minded people. I share daily life experiences, student life moments, CSE-related progress, and updates on my Java learning journey. The content I create is simple, relatable, and grounded in reality—no fancy filters, just genuine experiences. It's fulfilling to know that my videos might help someone going through similar challenges or inspire them to pursue their own goals. Creating content has taught me consistency, storytelling, and the importance of authenticity in building a community.
+                </p>
+            </div>
+        </section>
+
+        <!-- Hobbies and Favorites -->
+        <section>
+            <h2 class="section-title">Hobbies & Favorites</h2>
+            
+            <div class="hobbies-grid">
+                <div class="hobby-item">
+                    <h3 class="hobby-title">Hobbies</h3>
+                    <ul class="hobby-list">
+                        <li>Watching anime</li>
+                        <li>Reading books</li>
+                        <li>Playing games</li>
+                    </ul>
+                </div>
+
+                <div class="hobby-item">
+                    <h3 class="hobby-title">Favorites</h3>
+                    <div class="favorites-item">
+                        <span class="favorites-label">Game:</span> Sekiro Shadow Die Twice
+                    </div>
+                    <div class="favorites-item">
+                        <span class="favorites-label">Anime:</span> Sword Art Online, Clannad After Story
+                    </div>
+                    <div class="favorites-item">
+                        <span class="favorites-label">Books:</span> Deep Work, Atomic Habits
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="contact-section">
+            <h2 class="section-title">Contact</h2>
+            <div class="social-links">
+                <a href="#" class="social-icon" title="Facebook">f</a>
+                <a href="#" class="social-icon" title="Instagram">ig</a>
+                <a href="#" class="social-icon" title="Twitter">𝕏</a>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
