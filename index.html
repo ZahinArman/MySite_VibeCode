@@ -87,27 +87,35 @@
 
         .cursor-trail {
             position: fixed;
-            width: 12px;
-            height: 12px;
-            background: rgba(250, 204, 21, 0.6);
+            top: 0;
+            left: 0;
+            width: 28px;
+            height: 28px;
+            background: radial-gradient(circle, rgba(250, 204, 21, 0.45) 0%, rgba(250, 204, 21, 0.1) 42%, rgba(250, 204, 21, 0) 72%);
             border-radius: 50%;
             pointer-events: none;
             z-index: 9999;
             mix-blend-mode: screen;
-            transition: transform 0.15s ease-out;
+            filter: blur(3px);
+            will-change: transform, opacity;
+            transform: translate3d(-100px, -100px, 0);
         }
 
         .cursor-main {
             position: fixed;
-            width: 16px;
-            height: 16px;
-            background: rgba(250, 204, 21, 0.8);
-            border: 2px solid rgba(250, 204, 21, 1);
+            top: 0;
+            left: 0;
+            width: 18px;
+            height: 18px;
+            background: radial-gradient(circle, rgba(250, 204, 21, 0.95) 0%, rgba(250, 204, 21, 0.55) 55%, rgba(250, 204, 21, 0.15) 100%);
+            border: 1px solid rgba(250, 204, 21, 0.8);
             border-radius: 50%;
             pointer-events: none;
             z-index: 10000;
             mix-blend-mode: screen;
-            transition: transform 0.05s ease-out;
+            box-shadow: 0 0 20px rgba(250, 204, 21, 0.5);
+            will-change: transform;
+            transform: translate3d(-100px, -100px, 0);
         }
 
         @keyframes fadeOut {
@@ -206,7 +214,7 @@
                     <span class="text-sm">Instagram</span>
                 </a>
 
-                <a href="/cdn-cgi/l/email-protection#1c767d7475727d6e717d722d2e2f285c7b717d7570327f7371" class="group px-6 py-3 border border-cyan-400/30 hover:border-cyan-400 hover:bg-cyan-400/10 transition-all duration-300 flex items-center gap-2 hover:scale-110 hover:-translate-y-1">
+                <a href="mailto:jahinarman1234@gmail.com" class="group px-6 py-3 border border-cyan-400/30 hover:border-cyan-400 hover:bg-cyan-400/10 transition-all duration-300 flex items-center gap-2 hover:scale-110 hover:-translate-y-1">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                     <span class="text-sm">Email</span>
                 </a>
@@ -460,6 +468,90 @@
         </div>
     </section>
 
+    <!-- Projects Section -->
+    <section class="py-16 px-6 relative" id="projects">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl md:text-6xl font-black mb-4 text-center">
+                <span class="bg-gradient-to-r from-cyan-400 via-white to-yellow-400 bg-clip-text text-transparent">
+                    Featured Projects
+                </span>
+            </h2>
+            <p class="text-center text-gray-400 mb-10 max-w-3xl mx-auto text-base">
+                A few builds from my journey. Each one solved a real problem and helped me level up as a developer.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <article class="group bg-gradient-to-br from-cyan-500/10 to-transparent border border-cyan-400/30 p-6 hover:border-cyan-400 transition-all duration-300 hover:scale-[1.015]">
+                    <div class="mb-4 flex items-center justify-between">
+                        <span class="font-mono text-xs text-cyan-300 border border-cyan-400/30 px-2 py-1">PROJECT 01</span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse"></span>
+                    </div>
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="font-mono text-xs uppercase tracking-widest text-cyan-300">Productivity</span>
+                        <span class="text-xs text-gray-500 font-mono">Live</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Blos Routine</h3>
+                    <p class="text-gray-400 text-sm mb-4">A focused routine planner for consistent daily execution.</p>
+                    <a href="https://blosroutine.netlify.app/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-cyan-400/40 px-4 py-2 text-sm font-mono text-cyan-300 hover:bg-cyan-400/10 hover:border-cyan-300 transition-colors">
+                        <span>Open Project</span>
+                        <span aria-hidden="true">-></span>
+                    </a>
+                </article>
+
+                <article class="group bg-gradient-to-br from-yellow-500/10 to-transparent border border-yellow-400/30 p-6 hover:border-yellow-400 transition-all duration-300 hover:scale-[1.015]">
+                    <div class="mb-4 flex items-center justify-between">
+                        <span class="font-mono text-xs text-yellow-300 border border-yellow-400/30 px-2 py-1">PROJECT 02</span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-yellow-400 animate-pulse"></span>
+                    </div>
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="font-mono text-xs uppercase tracking-widest text-yellow-300">Focus System</span>
+                        <span class="text-xs text-gray-500 font-mono">Live</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Ember Focus</h3>
+                    <p class="text-gray-400 text-sm mb-4">A distraction-resistant workspace to stay deep on high-value work.</p>
+                    <a href="https://emberfocus.netlify.app/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-yellow-400/40 px-4 py-2 text-sm font-mono text-yellow-300 hover:bg-yellow-400/10 hover:border-yellow-300 transition-colors">
+                        <span>Open Project</span>
+                        <span aria-hidden="true">-></span>
+                    </a>
+                </article>
+
+                <article class="group bg-gradient-to-br from-blue-500/10 to-transparent border border-blue-400/30 p-6 hover:border-blue-400 transition-all duration-300 hover:scale-[1.015]">
+                    <div class="mb-4 flex items-center justify-between">
+                        <span class="font-mono text-xs text-blue-300 border border-blue-400/30 px-2 py-1">PROJECT 03</span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-blue-400 animate-pulse"></span>
+                    </div>
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="font-mono text-xs uppercase tracking-widest text-blue-300">Dev Workflow</span>
+                        <span class="text-xs text-gray-500 font-mono">Live</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Coding Tracker</h3>
+                    <p class="text-gray-400 text-sm mb-4">A coding activity tracker that helps measure momentum over time.</p>
+                    <a href="https://coding-tracker-zahinnprojects.netlify.app/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-blue-400/40 px-4 py-2 text-sm font-mono text-blue-300 hover:bg-blue-400/10 hover:border-blue-300 transition-colors">
+                        <span>Open Project</span>
+                        <span aria-hidden="true">-></span>
+                    </a>
+                </article>
+
+                <article class="group bg-gradient-to-br from-green-500/10 to-transparent border border-green-400/30 p-6 hover:border-green-400 transition-all duration-300 hover:scale-[1.015]">
+                    <div class="mb-4 flex items-center justify-between">
+                        <span class="font-mono text-xs text-green-300 border border-green-400/30 px-2 py-1">PROJECT 04</span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse"></span>
+                    </div>
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="font-mono text-xs uppercase tracking-widest text-green-300">Habit Engine</span>
+                        <span class="text-xs text-gray-500 font-mono">Live</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Habit Project Tracker</h3>
+                    <p class="text-gray-400 text-sm mb-4">A project-oriented habit tracker for building streaks with accountability.</p>
+                    <a href="https://habit-project-tracker-zahinprojects.netlify.app/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-green-400/40 px-4 py-2 text-sm font-mono text-green-300 hover:bg-green-400/10 hover:border-green-300 transition-colors">
+                        <span>Open Project</span>
+                        <span aria-hidden="true">-></span>
+                    </a>
+                </article>
+            </div>
+        </div>
+    </section>
+
     <!-- Active Challenges -->
     <section class="py-20 px-6 relative" id="challenges">
         <div class="max-w-6xl mx-auto">
@@ -541,22 +633,32 @@
             </p>
 
             <div class="bg-white/5 border border-white/10 p-12 backdrop-blur-sm">
-                <form class="space-y-6">
+                <form class="space-y-6" action="https://formsubmit.co/jahinarman1234@gmail.com" method="POST">
+                    <input type="hidden" name="_subject" value="New Portfolio Contact Message" />
+                    <input type="hidden" name="_template" value="table" />
+                    <input type="hidden" name="_captcha" value="false" />
+                    <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off" />
                     <div class="grid md:grid-cols-2 gap-6">
                         <input
                             type="text"
+                            name="name"
                             placeholder="Your Name"
+                            required
                             class="bg-white/5 border border-white/20 px-6 py-4 focus:border-yellow-400 focus:outline-none transition-colors placeholder-gray-600 text-white"
                         />
                         <input
                             type="email"
+                            name="email"
                             placeholder="Your Email"
+                            required
                             class="bg-white/5 border border-white/20 px-6 py-4 focus:border-yellow-400 focus:outline-none transition-colors placeholder-gray-600 text-white"
                         />
                     </div>
                     <textarea
+                        name="message"
                         placeholder="Your Message"
                         rows="6"
+                        required
                         class="w-full bg-white/5 border border-white/20 px-6 py-4 focus:border-yellow-400 focus:outline-none transition-colors placeholder-gray-600 resize-none text-white"
                     ></textarea>
                     <button
@@ -581,7 +683,7 @@
                 <a href="https://github.com/ZahinArman" target="_blank" class="text-gray-500 hover:text-white transition-colors">
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
                 </a>
-                <a href="/cdn-cgi/l/email-protection#86ece7eeefe8e7f4ebe7e8b7b4b5b2c6e1ebe7efeaa8e5e9eb" class="text-gray-500 hover:text-cyan-400 transition-colors">
+                <a href="mailto:jahinarman1234@gmail.com" class="text-gray-500 hover:text-cyan-400 transition-colors">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                 </a>
             </div>
@@ -601,64 +703,67 @@
     </footer>
 
     <script>
-        // Smooth Cursor with Trails
-        const cursorMain = document.createElement('div');
-        cursorMain.className = 'cursor-main';
-        document.body.appendChild(cursorMain);
+        // Smooth Cursor with a spring-chain trail
+        if (window.matchMedia('(pointer: fine)').matches) {
+            const cursorMain = document.createElement('div');
+            cursorMain.className = 'cursor-main';
+            document.body.appendChild(cursorMain);
 
-        const trails = [];
-        const trailCount = 8;
-        
-        for (let i = 0; i < trailCount; i++) {
-            const trail = document.createElement('div');
-            trail.className = 'cursor-trail';
-            document.body.appendChild(trail);
-            trails.push({
-                element: trail,
-                x: 0,
-                y: 0,
-                delay: i * 15
-            });
-        }
+            const trails = [];
+            const trailCount = 14;
+            const startX = window.innerWidth / 2;
+            const startY = window.innerHeight / 2;
 
-        let mouseX = 0;
-        let mouseY = 0;
-        let mainX = 0;
-        let mainY = 0;
+            for (let i = 0; i < trailCount; i++) {
+                const trail = document.createElement('div');
+                trail.className = 'cursor-trail';
+                document.body.appendChild(trail);
+                trails.push({
+                    element: trail,
+                    x: startX,
+                    y: startY
+                });
+            }
 
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
+            let mouseX = startX;
+            let mouseY = startY;
+            let mainX = startX;
+            let mainY = startY;
 
-        function animateCursor() {
-            // Smooth cursor following with easing
-            const ease = 0.15;
-            mainX += (mouseX - mainX) * ease;
-            mainY += (mouseY - mainY) * ease;
-            
-            cursorMain.style.left = mainX - 8 + 'px';
-            cursorMain.style.top = mainY - 8 + 'px';
-
-            // Animate trails with varying delays
-            trails.forEach((trail, index) => {
-                const delay = 0.08 + (index * 0.02);
-                trail.x += (mouseX - trail.x) * delay;
-                trail.y += (mouseY - trail.y) * delay;
-                
-                const scale = 1 - (index * 0.1);
-                const opacity = 0.6 - (index * 0.06);
-                
-                trail.element.style.left = trail.x - 6 + 'px';
-                trail.element.style.top = trail.y - 6 + 'px';
-                trail.element.style.transform = `scale(${scale})`;
-                trail.element.style.opacity = opacity;
+            document.addEventListener('pointermove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
             });
 
-            requestAnimationFrame(animateCursor);
-        }
+            function animateCursor() {
+                // Main cursor follows quickly, trail follows as a soft spring chain.
+                mainX += (mouseX - mainX) * 0.22;
+                mainY += (mouseY - mainY) * 0.22;
 
-        animateCursor();
+                cursorMain.style.transform = `translate3d(${mainX}px, ${mainY}px, 0) translate(-50%, -50%)`;
+
+                let leadX = mainX;
+                let leadY = mainY;
+
+                trails.forEach((trail, index) => {
+                    const followStrength = Math.max(0.18 - index * 0.008, 0.06);
+                    trail.x += (leadX - trail.x) * followStrength;
+                    trail.y += (leadY - trail.y) * followStrength;
+
+                    leadX = trail.x;
+                    leadY = trail.y;
+
+                    const scale = Math.max(1 - index * 0.05, 0.2);
+                    const opacity = Math.max(0.62 - index * 0.035, 0.05);
+                    trail.element.style.opacity = opacity;
+                    trail.element.style.transform = `translate3d(${trail.x}px, ${trail.y}px, 0) translate(-50%, -50%) scale(${scale})`;
+                });
+
+                requestAnimationFrame(animateCursor);
+            }
+
+            animateCursor();
+        }
 
         // Typewriter effect
         const text = "Zahin Arman";
@@ -686,11 +791,6 @@
             });
         });
 
-        // Form submission
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thanks for reaching out! This is a demo form. In a real site, this would send your message.');
-        });
     </script>
 </body>
 </html>
